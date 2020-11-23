@@ -119,7 +119,7 @@ void list_shift_in(list_t * list, void * data, uint16_t len){
 
 /**
     @name list_len 
-    @brief removes data from start of linked list
+    @brief returns length of linked list 
     @param [in] list - a pointer to a list 
     @return length of linked list
 */
