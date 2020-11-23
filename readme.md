@@ -20,14 +20,19 @@ Snippet from [main.c](./src/main.c)
     print_list(&my_list); // "The cake is a lie!"
     
     printf("Pop & Print: \r\n");
-    list_pop(&my_list,data,&len); 
-    print_list(&my_list); // "The cake is a"
+    list_pop(&my_list, NULL); 
+    print_list(&my_list); // "The cake is a "
 
     printf("Shift & Print: \r\n");
-    list_shift(&my_list,data,&len);
-    print_list(&my_list); // "cake is a"
+    list_shift(&my_list, NULL);
+    print_list(&my_list); // "cake is a "
     
     printf("List length is: %d\r\n",list_len(&my_list)); // 3
+
+    printf("Grab data from end and put at start: \r\n");
+    data = list_pop(&my_list, &len); 
+    list_shift_in(&my_list, data, len); 
+    print_list(&my_list); // "a cake is "
 ```
 
 Source files are [ll.c](./src/ll.c) & [ll.h](./src/ll.h)

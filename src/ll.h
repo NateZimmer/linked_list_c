@@ -31,18 +31,27 @@ void list_push(list_t * list, void * data, uint16_t len);
     @brief removes data from end of linked list
     @param [in] list - a pointer to a list 
     @param [out] data - a pointer to the removed element's data
-    @param [out] len - length of the data  
+    @return a pointer to the popped out data 
 */
-void list_pop(list_t * list, void * data, uint16_t * len);
+void * list_pop(list_t * list, uint16_t * len);
 
 /**
     @name list_shift 
     @brief removes data from start of linked list
     @param [in] list - a pointer to a list 
-    @param [out] data - a pointer to the removed element's data
-    @param [out] len - length of the data  
+    @param [out] len - a pointer, value is the length of the data
+    @return pointer to shifted out data   
 */
-void list_shift(list_t * list, void * data, uint16_t * len);
+void * list_shift(list_t * list, uint16_t * len);
+
+/**
+    @name list_shift_in 
+    @brief adds data to start of linked list
+    @param [in] list - a pointer to a list 
+    @param [in] data - a pointer to a data
+    @param [in] len - the length of the data   
+*/
+void list_shift_in(list_t * list, void * data, uint16_t len);
 
 /**
     @name list_len 
@@ -51,6 +60,7 @@ void list_shift(list_t * list, void * data, uint16_t * len);
     @return length of linked list
 */
 uint16_t list_len(list_t * list);
+
 
 
 #endif // LL_H

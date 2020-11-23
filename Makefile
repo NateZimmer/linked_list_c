@@ -10,6 +10,9 @@ CC = gcc
 # main goal
 all: $(TARGET)
 
+debug: CFLAGS += -DDEBUG -g
+debug: $(TARGET)
+
 # target executable
 $(TARGET): $(OBJECTS)
 	$(CC) $(LDFLAGS) -o $(TARGET) $(OBJECTS)
