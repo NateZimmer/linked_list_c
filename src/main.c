@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <string.h>
+#include "ll.h"
+
+#define ARR_LEN 5
+
+// Proto 
+void print_list(list_t * list);
+
+int main()
+{
+    void * data;
+    uint16_t len; 
+    int i = 0;
+    
+    // Create list, must be set to null initially 
+    list_t my_list = { .head= NULL, .tail=NULL};
+
+    // String example but can be arbitrary data type & len 
+    char * truth[ARR_LEN] ={ "The ","cake ","is ","a ","lie!"};
+
+    for(i = 0; i < ARR_LEN; i++){ // Fill list: 
+        list_push(&my_list, truth[i], strlen(truth[i]));
+    }
+    printf("Print list: \r\n");
+    print_list(&my_list); // "The cake is a lie!"
+    
+    printf("Pop & Print: \r\n");
+    list_pop(&my_list,data,&len); 
+    print_list(&my_list); // "The cake is a"
+
+    printf("Shift & Print: \r\n");
+    list_shift(&my_list,data,&len);
+    print_list(&my_list); // "cake is a"
+    
+    printf("List length is: %d\r\n",list_len(&my_list)); // 3
+    
+    printf("Pop & Print: \r\n");
+    for(i = 0; i < ARR_LEN; i++)
+    {
+        list_pop(&my_list,data,&len); 
+        printf("%d :",list_len(&my_list));
+        print_list(&my_list);
+    }
+}
+
+void print_list(list_t * list)
+{
+    list_el_t * list_el;
+    list_el = list->tail;
+    while(1)
+    {
+        if(list_el == NULL)
+        {
+            break;
+        }else
+        {
+            printf("%s",(char *)list_el->data);
+            list_el = (list_el_t *)list_el->next;
+        }
+    }
+    printf("\r\n");
+}
